@@ -1,0 +1,16 @@
+{
+    "manifest_version": 2,
+    "name": "Video4Speed",
+    "version": "1.0",
+
+    "description": "Add a video playback speed controler for any html 5 video",
+
+    "permissions": [
+        "activeTab"
+    ],
+
+    "browser_action": {
+        "default_title": "Video4Speed",
+        "default_popup": "poppup/index.html"
+    }
+}
