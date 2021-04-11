@@ -2,6 +2,7 @@
     "manifest_version": 2,
     "name": "Video4Speed",
     "version": "1.0",
+    "homepage_url": "https://github.com/alexandrenmedeiros/playback-speed",
 
     "description": "Add a video playback speed controler for any html 5 video",
     "icons": {
