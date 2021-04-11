@@ -8,7 +8,22 @@ const b175x = document.getElementById('b175x')
 const b2x = document.getElementById('b2x')
 
 numSpeed.oninput = function() {
+    // validation on number input
+    if (Number(numSpeed.value) == 0) {
+        numSpeed.value = 1
+    }
+    else if (Number(numSpeed.value) > Number(numSpeed.max)) {
+        numSpeed.value = numSpeed.max
+    }
+    else if (Number(numSpeed.value) < Number(numSpeed.min)) {
+        numSpeed.value = numSpeed.min
+    }
+    else if (Number(numSpeed.value) * 100 % 100 > 0) {
+        numSpeed.value = Number(numSpeed.value).toFixed(2)
+    }
+
     rangeSpeed.value = numSpeed.value
+
 }
 
 rangeSpeed.oninput = function() {
@@ -55,7 +70,12 @@ b2x.onclick = function() {
 
 function clickHandler() {
     // popup javascript that communicates with currently tab
-
+    document.addEventListener("click", (e) => {
+        console.log(e)
+        console.log(e.target.type)
+        console.log('num', numSpeed.value)
+        console.log('range', rangeSpeed.value)
+    })
 }
 
 function execError(err) {
@@ -66,6 +86,7 @@ function execError(err) {
     console.log('Failed to alter video playback speed')
 }
 
+clickHandler()
 // browser.tabs.executeScript({file: '/content_scripts/playbackspeed.js'})
 // .then(clickHandler) // popupClicks
 // .catch(execError) // error handler function
