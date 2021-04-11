@@ -55,39 +55,34 @@ b2x.onclick = function() {
     rangeSpeed.value = 2.0
 }
 
-// nao vai funcionar isso pq n é no document é na tab :/ 
-// mas a ideia ta ai
+function connectPopup() {
+    /* popup javascript that communicates with currently tab open in the browser
+       using the injected javascript (.../playbackspeed.js) 
+    */
 
-// if (document.getElementsByTagName('video').length > 0) { // if there is any video on the page
+    // check if there is any video on the currently tab
+    browser.tabs.sendMessage(tabs[0].id, {
+        msg_type: "checkVideo"
+    })
 
-//     // change divs visibility to show proper html
-//     document.getElementById('default').classList.add('hidden')
-//     document.getElementById('avaliable').classList.remove('hidden')
-    
-//     document.querySelector('video').playbackRate = speed.value;
-// }
-
-
-function clickHandler() {
-    // popup javascript that communicates with currently tab
+    // add click listener to start altering the playback speed
     document.addEventListener("click", (e) => {
-        console.log(e)
-        console.log(e.target.type)
-        console.log('num', numSpeed.value)
-        console.log('range', rangeSpeed.value)
+        browser.tabs.sendMessage(tabs[0].id, {
+            msg_type: "alterSpeed",
+            newSpeed: numSpeed.value
+        })
     })
 }
 
 function execError(err) {
     // function to handle script execution errors
+    console.log(err)
 
     document.getElementById('default').classList.add('hidden')
     document.getElementById('noVideo').classList.remove('hidden')
     console.log('Failed to alter video playback speed')
 }
 
-clickHandler()
-// browser.tabs.executeScript({file: '/content_scripts/playbackspeed.js'})
-// .then(clickHandler) // popupClicks
-// .catch(execError) // error handler function
-
+browser.tabs.executeScript({file: '/content_scripts/playbackspeed.js'})
+.then(connectPopup) // popupClicks
+.catch(execError) // error handler function
