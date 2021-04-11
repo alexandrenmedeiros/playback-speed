@@ -60,25 +60,33 @@ function connectPopup() {
        using the injected javascript (.../playbackspeed.js) 
     */
 
+   // send message checking if there is any video on currently tab
     function checkVideo(tabs) {
-        // check if there is any video on the currently tab
         browser.tabs.sendMessage(tabs[0].id, {
             msg_type: "checkVideo"
         })
     }
+    browser.tabs.query({active: true, currentWindow: true})
+    .then(checkVideo)
+    .catch(execError)
     
+    // check response and display the 'noVideo' content
+    function handleNoVideo(req, sender, sendR) {
+        if (req.noVideo = true) {     
+            document.getElementById('default').classList.add('hidden')
+            document.getElementById('noVideo').classList.remove('hidden')
+            console.log('Failed to alter video playback speed')
+        }
+    }
+    browser.runtime.onMessage.addListener(handleNoVideo)
+    
+    // add click listener to start sending alter playback speed message
     function alterSpeed(tabs) {
         browser.tabs.sendMessage(tabs[0].id, {
             msg_type: "alterSpeed",
             newSpeed: numSpeed.value
         })
     }
-    
-    browser.tabs.query({active: true, currentWindow: true})
-    .then(checkVideo)
-    .catch(execError)
-
-    // add click listener to start altering the playback speed
     document.addEventListener("click", (e) => {
         browser.tabs.query({active: true, currentWindow: true})
         .then(alterSpeed)

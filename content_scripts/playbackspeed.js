@@ -10,7 +10,7 @@
     browser.runtime.onMessage.addListener((msg) => {
         if (msg.msg_type == 'checkVideo') {
             if (document.getElementsByTagName('video').length ==  0) { // if there is no video on the page
-                throw 'NO_VIDEO'
+                browser.runtime.sendMessage({noVideo: true})
             }
         }
 
