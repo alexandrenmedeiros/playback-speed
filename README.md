@@ -9,7 +9,7 @@ This is a simple firefox extension that I did. This extension changes the video 
 The main motivations behind this project was:
 
 - 1o. Learn how to develop an Firefox browser extension
-- 2o. Create this extension in the most basic way possible. There are already some other extensions out there with the same purpose, but their code is way too complex for this simple application.
+- 2o. Create this extension in the most basic way possible. There are already some other extensions out there with the same purpose, but their code is really big and I could not understand before developing this myself.
 
 ## File structure
 
