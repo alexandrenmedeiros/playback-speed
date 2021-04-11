@@ -4,12 +4,16 @@
     "version": "1.0",
 
     "description": "Add a video playback speed controler for any html 5 video",
+    "icons": {
+        "48": "icons/baseline_shutter_speed_black_24dp.png"
+    },
 
     "permissions": [
         "activeTab"
     ],
 
     "browser_action": {
+        "default_icon": "icons/baseline_shutter_speed_black_18dp.png",
         "default_title": "Video4Speed",
         "default_popup": "poppup/index.html"
     }
