@@ -1,4 +1,4 @@
-# Video Playback Speed Changer
+#  ![](./icons/baseline_shutter_speed_black_24dp.png) Video Playback Speed Changer ![](./icons/baseline_shutter_speed_white_24dp.png)
 
 This is a simple firefox extension that I did. This extension changes the video playback speed, it speeds up or speeds down the current video playing. It works on all html5 players. The main javascript command that it injects and executes is the following:
 
