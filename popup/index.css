@@ -1,3 +1,50 @@
+html, body {
+    background-color: #524f4f;
+    color: whitesmoke;
+}
+
 .hidden {
     display: none;
+}
+
+.button {
+    border: none;
+    color: whitesmoke;
+    
+    /* padding: 8px 16px; */
+    width: 17%;
+    height: 40px;
+
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+
+    background-color: #8a8a8a;
+    border: 2px solid #555555;
+}
+  
+.button:hover {
+    background-color: #333333;
+    color: white;
+}
+
+.numberStyle {
+    background-color: #333333;
+    -moz-appearance: textfield;
+        
+    border-right: #000000;
+    border-top: #000000;
+    border-left: #000000;
+    border-bottom: #000000;
+
+    height: 30px;
+    width: 15%;
+    color: whitesmoke;
+}
+
+.rangeStyle {
+    width: 77%;
 }
