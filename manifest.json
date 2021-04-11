@@ -13,8 +13,13 @@
     ],
 
     "browser_action": {
-        "default_icon": "icons/baseline_shutter_speed_black_18dp.png",
+        "default_icon": "icons/baseline_shutter_speed_white_18dp.png",
+        "theme_icons": [{
+            "light": "icons/baseline_shutter_speed_white_18dp.png",
+            "dark": "icons/baseline_shutter_speed_black_18dp.png",
+            "size": 32
+        }],
         "default_title": "Video4Speed",
-        "default_popup": "poppup/index.html"
+        "default_popup": "popup/index.html"
     }
 }
