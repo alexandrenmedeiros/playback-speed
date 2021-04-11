@@ -60,17 +60,29 @@ function connectPopup() {
        using the injected javascript (.../playbackspeed.js) 
     */
 
-    // check if there is any video on the currently tab
-    browser.tabs.sendMessage(tabs[0].id, {
-        msg_type: "checkVideo"
-    })
-
-    // add click listener to start altering the playback speed
-    document.addEventListener("click", (e) => {
+    function checkVideo(tabs) {
+        // check if there is any video on the currently tab
+        browser.tabs.sendMessage(tabs[0].id, {
+            msg_type: "checkVideo"
+        })
+    }
+    
+    function alterSpeed(tabs) {
         browser.tabs.sendMessage(tabs[0].id, {
             msg_type: "alterSpeed",
             newSpeed: numSpeed.value
         })
+    }
+    
+    browser.tabs.query({active: true, currentWindow: true})
+    .then(checkVideo)
+    .catch(execError)
+
+    // add click listener to start altering the playback speed
+    document.addEventListener("click", (e) => {
+        browser.tabs.query({active: true, currentWindow: true})
+        .then(alterSpeed)
+        .catch(execError)
     })
 }
 
