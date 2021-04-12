@@ -20,9 +20,6 @@
     }
 
     function keydownHandler(e) {
-        let x = speeds[iSpeeds]
-        console.log('desce', x)
-
         if (e.code == 'ControlRight') {
             pressedKeys[key_map.ControlRight] = 1
         }
@@ -38,15 +35,9 @@
         else if (e.code == 'KeyL') {
             pressedKeys[key_map.KeyL] = 1
         }
-
-        
-        console.log('keys' , pressedKeys)
-        console.log('ispeed' , iSpeeds)
     }
 
     function keyupHandler(e) {
-        console.log('sobe')
-
         if (e.code == 'ControlRight') {
             pressedKeys[key_map.ControlRight] = 0
         }
@@ -59,6 +50,8 @@
             if (pressedKeys[key_map.ControlRight] == 1 && pressedKeys[key_map.ShiftRight] == 1 ) {
                 iSpeeds = Math.max(0, iSpeeds - 1)
                 document.querySelector('video').playbackRate = speeds[iSpeeds]
+
+                console.log('changed playback speed to: ', speeds[iSpeeds])
             }
         }
         else if (e.code == 'Period') {
@@ -67,6 +60,8 @@
             if (pressedKeys[key_map.ControlRight] == 1 && pressedKeys[key_map.ShiftRight] == 1 ) {
                 iSpeeds = Math.min(speeds.length - 1, iSpeeds + 1)
                 document.querySelector('video').playbackRate = speeds[iSpeeds]
+
+                console.log('changed playback speed to: ', speeds[iSpeeds])
             }
         }
         else if (e.code == 'KeyL') {
@@ -75,11 +70,10 @@
             if (pressedKeys[key_map.ControlRight] == 1 && pressedKeys[key_map.ShiftRight] == 1 ) {
                 iSpeeds = 2
                 document.querySelector('video').playbackRate = speeds[iSpeeds]
+
+                console.log('changed playback speed to: ', speeds[iSpeeds])
             }
         }
-
-        console.log('keys' , pressedKeys)
-        console.log('ispeed' , iSpeeds)
     }
 
     if (document.getElementsByTagName('video').length >  0) { // if there is any video on the page
