@@ -1,12 +1,10 @@
 const rangeSpeed = document.getElementById('rangeSpeed')
 const numSpeed = document.getElementById('numSpeed')
 
-const b1x = document.getElementById('b1x')
-const b125x = document.getElementById('b125x')
-const b150x = document.getElementById('b150x')
-const b175x = document.getElementById('b175x')
-const b2x = document.getElementById('b2x')
 const b025x = document.getElementById('b025x')
+const b1x = document.getElementById('b1x')
+const b150x = document.getElementById('b150x')
+const b2x = document.getElementById('b2x')
 const b5x = document.getElementById('b5x')
 
 numSpeed.oninput = function() {
@@ -37,19 +35,9 @@ b1x.onclick = function() {
     rangeSpeed.value = 1.0
 }
 
-b125x.onclick = function() {
-    numSpeed.value = 1.25
-    rangeSpeed.value = 1.25
-}
-
 b150x.onclick = function() {
     numSpeed.value = 1.5
     rangeSpeed.value = 1.5
-}
-
-b175x.onclick = function() {
-    numSpeed.value = 1.75
-    rangeSpeed.value = 1.75
 }
 
 b2x.onclick = function() {

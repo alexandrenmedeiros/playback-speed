@@ -49,12 +49,6 @@ html, body {
     width: 77%;
 }
 
-.hotkeys {
-    text-align: right;
-    font-size: 12px;
-}
-
-.inline {
-    display: inline-flex;
-    width: 100%;
+.textStyle {
+    font-family: monospace;
 }
