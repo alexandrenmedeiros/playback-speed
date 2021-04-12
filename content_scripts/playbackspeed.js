@@ -7,6 +7,7 @@
     }
     window.hasRun = true
 
+    // speeds for hotkeys speed change
     let speeds = [0.25, 0.5, 1, 1.25, 1.5, 2, 2.5, 5]
     let iSpeeds = 2
 
@@ -47,7 +48,7 @@
         else if (e.code == 'Comma') {
             pressedKeys[key_map.Comma] = 0
 
-            if (pressedKeys[key_map.ControlRight] == 1 && pressedKeys[key_map.ShiftRight] == 1 ) {
+            if (pressedKeys[key_map.ShiftRight] == 1 ) {
                 iSpeeds = Math.max(0, iSpeeds - 1)
                 document.querySelector('video').playbackRate = speeds[iSpeeds]
 
@@ -57,7 +58,7 @@
         else if (e.code == 'Period') {
             pressedKeys[key_map.Period] = 0
 
-            if (pressedKeys[key_map.ControlRight] == 1 && pressedKeys[key_map.ShiftRight] == 1 ) {
+            if (pressedKeys[key_map.ShiftRight] == 1 ) {
                 iSpeeds = Math.min(speeds.length - 1, iSpeeds + 1)
                 document.querySelector('video').playbackRate = speeds[iSpeeds]
 
@@ -67,7 +68,7 @@
         else if (e.code == 'KeyL') {
             pressedKeys[key_map.KeyL] = 0
 
-            if (pressedKeys[key_map.ControlRight] == 1 && pressedKeys[key_map.ShiftRight] == 1 ) {
+            if (pressedKeys[key_map.ShiftRight] == 1 ) {
                 iSpeeds = 2
                 document.querySelector('video').playbackRate = speeds[iSpeeds]
 
@@ -76,6 +77,7 @@
         }
     }
 
+    // adding key listeners for hotkeys
     if (document.getElementsByTagName('video').length >  0) { // if there is any video on the page
         window.addEventListener('keydown', keydownHandler.bind(this))
         window.addEventListener('keyup', keyupHandler.bind(this))
