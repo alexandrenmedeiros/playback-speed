@@ -7,16 +7,34 @@
 
     <body>
         <div id='default'>
-            <input type="range" step="0.01" min="0.25" max="3" value="1.0" id="rangeSpeed" class='rangeStyle'>
-            <input type="number" step="0.01" min="0.25" max="3" value="1.0" id="numSpeed" class="numberStyle">
+            <input type="range" step="0.01" min="0.25" max="5" value="1.0" id="rangeSpeed" class='rangeStyle'>
+            <input type="number" step="0.01" min="0.25" max="5" value="1.0" id="numSpeed" class="numberStyle">
 
             <br>
 
-            <button type="button" id="b1x" class="button" >1</button>
             <button type="button" id="b125x" class="button" >1.25</button>
             <button type="button" id="b150x" class="button" >1.50</button>
             <button type="button" id="b175x" class="button" >1.75</button>
             <button type="button" id="b2x" class="button" >2</button>
+            
+            <br>
+            
+            <div class="inline">
+                <button type="button" id="b025x" class="button" >0.25</button>
+                <button type="button" id="b1x" class="button" >1</button>
+                <button type="button" id="b5x" class="button" >5</button>
+    
+                <div>
+                    <p class='hotkeys'>
+                        Hotkeys: 
+                        <br>(ctrl + shift + ...)
+                        <br>L -> reset to 1x speed.
+                        <br>, -> speeds down a bit
+                        <br>. -> speeds up a bit
+                    </p>
+                </div>
+            </div>
+
         </div>
         <div id='noVideo' class="hidden">
             <p>No video found</p>

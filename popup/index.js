@@ -6,6 +6,8 @@ const b125x = document.getElementById('b125x')
 const b150x = document.getElementById('b150x')
 const b175x = document.getElementById('b175x')
 const b2x = document.getElementById('b2x')
+const b025x = document.getElementById('b025x')
+const b5x = document.getElementById('b5x')
 
 numSpeed.oninput = function() {
     // validation on number input
@@ -53,6 +55,16 @@ b175x.onclick = function() {
 b2x.onclick = function() {
     numSpeed.value = 2.0
     rangeSpeed.value = 2.0
+}
+
+b025x.onclick = function() {
+    numSpeed.value = 0.25
+    rangeSpeed.value = 0.25
+}
+
+b5x.onclick = function() {
+    numSpeed.value = 5.0
+    rangeSpeed.value = 5.0
 }
 
 function connectPopup() {
