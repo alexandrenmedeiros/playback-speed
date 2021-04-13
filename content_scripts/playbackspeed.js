@@ -8,7 +8,7 @@
     window.hasRun = true
 
     // speeds for hotkeys speed change
-    let speeds = [0.25, 0.5, 1, 1.25, 1.5, 2, 2.5, 5]
+    let speeds = [0.25, 0.5, 1, 1.25, 1.5, 1.75, 2, 2.5, 5]
     let iSpeeds = 2
 
     let pressedKeys = [0, 0, 0, 0, 0]
