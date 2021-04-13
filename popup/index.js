@@ -23,7 +23,6 @@ numSpeed.oninput = function() {
     }
 
     rangeSpeed.value = numSpeed.value
-
 }
 
 rangeSpeed.oninput = function() {
@@ -60,26 +59,6 @@ function connectPopup() {
        using the injected javascript (.../playbackspeed.js) 
     */
 
-   // send message checking if there is any video on currently tab
-    function checkVideo(tabs) {
-        browser.tabs.sendMessage(tabs[0].id, {
-            msg_type: "checkVideo"
-        })
-    }
-    browser.tabs.query({active: true, currentWindow: true})
-    .then(checkVideo)
-    .catch(execError)
-    
-    // check response and display the 'noVideo' content
-    function handleNoVideo(req, sender, sendR) {
-        if (req.noVideo = true) {     
-            document.getElementById('default').classList.add('hidden')
-            document.getElementById('noVideo').classList.remove('hidden')
-            console.log('Failed to alter video playback speed')
-        }
-    }
-    browser.runtime.onMessage.addListener(handleNoVideo)
-    
     // add click listener to start sending alter playback speed message
     function alterSpeed(tabs) {
         browser.tabs.sendMessage(tabs[0].id, {
@@ -97,12 +76,36 @@ function connectPopup() {
 function execError(err) {
     // function to handle script execution errors
     console.log(err)
-
-    document.getElementById('default').classList.add('hidden')
-    document.getElementById('noVideo').classList.remove('hidden')
     console.log('Failed to alter video playback speed')
 }
 
-browser.tabs.executeScript({file: '/content_scripts/playbackspeed.js'})
-.then(connectPopup) // popupClicks
-.catch(execError) // error handler function
+
+// start to listen to findvideo.js to see if any video is found
+let found = false
+function searchVideos(req, sender, sendR) {
+    if (req.foundVideo = true && !found) {
+        found = true
+        console.log('found first video')
+
+        document.getElementById('default').classList.add('hidden')
+        document.getElementById('videoFound').classList.remove('hidden')
+
+        // run alter speed script on video frame
+        browser.tabs.executeScript({
+            frameId: sender.frameId,
+            file: '/content_scripts/playbackspeed.js',
+            runAt: "document_end"
+        })
+        .then(connectPopup) // popupClicks
+        .catch(execError) // error handler function
+    }
+}
+browser.runtime.onMessage.addListener(searchVideos)
+
+// search for videos on all frames
+browser.tabs.executeScript(null, {
+    allFrames: true,
+    matchAboutBlank: true,
+    file: '/content_scripts/findvideo.js',
+    runAt: "document_end"
+}).then(()=>{},e=>{console.error(e);});

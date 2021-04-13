@@ -6,7 +6,10 @@
     </head>
 
     <body>
-        <div id='default'>
+        <div id='default' class="textStyle">
+            <p>No video found</p>
+        </div>
+        <div id='videoFound' class="hidden">
             <input type="range" step="0.01" min="0.25" max="5" value="1.0" id="rangeSpeed" class='rangeStyle'>
             <input type="number" step="0.01" min="0.25" max="5" value="1.0" id="numSpeed" class="numberStyle">
 
@@ -24,9 +27,6 @@
                 <br>L - reset to 1x speed.
             </p>
 
-        </div>
-        <div id='noVideo' class="hidden textStyle">
-            <p>No video found</p>
         </div>
 
         <script src="index.js"></script>
